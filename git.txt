@@ -1,5 +1,3 @@
-我的码云地址：https://gitee.com/wang_shaobin
-
 git config --global user.name"wsb"
 git config --global user.email 2267638690@qq.com
 C:\Users\王少彬。。。。目录下有个.gitconfig文件，用于github的签名验证。
