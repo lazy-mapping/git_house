@@ -39,7 +39,8 @@ git fecth origin branch1:branch2    从远程分支拉取数据，配合git merg
 使用远程branch1分支在本地创建branch2(但不会切换到该分支),
 如果本地不存在branch2分支, 则会自动创建一个新的branch2分支,
 如果本地存在branch2分支, 并且是`fast forward', 则自动合并两个分支, 否则, 会阻止以上操作
-git diff 			查看尚未暂存的文件的差异
+git diff --staged		查看 尚未/已经(staged) 暂存的文件的差异，--stat简单查看
+git diff HEAD^ HEAD              比较上次提交commit和上上次提交
 一个英文版的git命令大全
 https://gitee.com/liaoxuefeng/learn-java/raw/master/teach/git-cheatsheet.pdf
 
