@@ -20,6 +20,7 @@ git branch -d 名字		删除分支
 git checkout master/名字        切换组织/分支
 git checkout -b 名字                创建并切换分支
 git merge 名字		指定分支合并到当前分支
+ git merge --abort		合并冲突后，取消合并
 git push origin dev                  推送本地分支到远程
 git push origin :sss                  删除远程指定分支
 cat 文件名			浏览文件内容
