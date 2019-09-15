@@ -38,6 +38,9 @@ git push origin  		当前分支推送到origin主机的对应分支。
 git push -u origin master	本地的master分支推送到origin主机,后面就可使用git push
 git fecth    从远程仓库下载新分支与数据
 
+一个英文版的git命令大全
+https://gitee.com/liaoxuefeng/learn-java/raw/master/teach/git-cheatsheet.pdf
+
 
 
 
