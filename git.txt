@@ -1,4 +1,4 @@
-git config --global user.name"wsb"
+﻿git config --global user.name"wsb"
 git config --global user.email 2267638690@qq.com
 C:\Users\王少彬。。。。目录下有个.gitconfig文件，用于github的签名验证。
 
@@ -8,7 +8,6 @@ git init			当前路径初始化工作目录
 git add			本地文件添加到暂存区
 git commit -m"注释"   	暂存区文件提交到仓库,  -am"" 本地到仓库
 git status			查看暂存区状态
-git diff 			查看对比
 git reset HEAD		撤销暂存区内容
 got reset --hard HEAD^  	版本回退
 git rm 			删除文件，-f参数：强制操作
@@ -33,11 +32,14 @@ git remote rm 删除远程仓库
 git clone 远程地址   		拷贝仓库
 文件要推到远程：要先pull拉，在推push
 git pull origin master --allow-unrelated-histories  
-远程仓库拉下来，会自动合并;	 参数：把两段不相干的分支进行强行合并
+远程拉下来所有文件，会自动合并到本地。参数是把两段不相干的分支进行强行合并
 git push origin  		当前分支推送到origin主机的对应分支。
 git push -u origin master	本地的master分支推送到origin主机,后面就可使用git push
-git fecth    从远程仓库下载新分支与数据
-
+git fecth origin branch1:branch2    从远程分支拉取数据，配合git merge使用，避免合并冲突 
+使用远程branch1分支在本地创建branch2(但不会切换到该分支),
+如果本地不存在branch2分支, 则会自动创建一个新的branch2分支,
+如果本地存在branch2分支, 并且是`fast forward', 则自动合并两个分支, 否则, 会阻止以上操作
+git diff 			查看尚未暂存的文件的差异
 一个英文版的git命令大全
 https://gitee.com/liaoxuefeng/learn-java/raw/master/teach/git-cheatsheet.pdf
 
