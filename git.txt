@@ -1,39 +1,42 @@
 git config --global user.name"wsb"
 git config --global user.email 2267638690@qq.com
-C:\Users\ÍõÉÙ±ò¡£¡£¡£¡£Ä¿Â¼ÏÂÓĞ¸ö.gitconfigÎÄ¼ş£¬ÓÃÓÚgithubµÄÇ©ÃûÑéÖ¤¡£
+C:\Users\ç‹å°‘å½¬ã€‚ã€‚ã€‚ã€‚ç›®å½•ä¸‹æœ‰ä¸ª.gitconfigæ–‡ä»¶ï¼Œç”¨äºgithubçš„ç­¾åéªŒè¯ã€‚
 
-git --version     		²é¿´°æ±¾¡£
-git config --list        		²é¿´ÅäÖÃÎÄ¼ş¡£
-git init			µ±Ç°Â·¾¶³õÊ¼»¯¹¤×÷Ä¿Â¼
-git add			±¾µØÎÄ¼şÌí¼Óµ½Ôİ´æÇø
-git commit -m"×¢ÊÍ"   	Ôİ´æÇøÎÄ¼şÌá½»µ½²Ö¿â,  -am"" ±¾µØµ½²Ö¿â
-git status			²é¿´Ôİ´æÇø×´Ì¬
-git diff 			²é¿´¶Ô±È
-git reset HEAD		³·ÏúÔİ´æÇøÄÚÈİ
-got reset --hard HEAD^  	°æ±¾»ØÍË
-git rm 			É¾³ıÎÄ¼ş£¬-f²ÎÊı£ºÇ¿ÖÆ²Ù×÷
-git mv			ÒÆ¶¯ÎÄ¼ş
-ls                            		²é¿´ÎÄ¼ş
-git branch		²é¿´·ÖÖ§
-git branch Ãû×Ö		´´½¨·ÖÖ§
-git branch -d Ãû×Ö		É¾³ı·ÖÖ§
-git checkout master/Ãû×Ö        ÇĞ»»×éÖ¯/·ÖÖ§
-git checkout -b Ãû×Ö                ´´½¨²¢ÇĞ»»·ÖÖ§
-git merge Ãû×Ö		Ö¸¶¨·ÖÖ§ºÏ²¢µ½µ±Ç°·ÖÖ§
-cat ÎÄ¼şÃû			ä¯ÀÀÎÄ¼şÄÚÈİ
-git log 			²é¿´ÈÕÖ¾£¬ --oneline	²é¿´µ¥ĞĞ£¬ --graphµãÏßÍ¼
-git tag -a v1.0.0		vi±à¼­Ä£Ê½£¬´´½¨°æ±¾ĞÅÏ¢£¬':wq'±£´æÍË³ö
-git tag			²é¿´ÀúÊ·°æ±¾
-git log --oneline --decorate --graph		²é¿´±êÇ©ĞÅÏ¢
-ssh-keygen -t rsa -C "2267638690@qq.com" 	Éú³ÉÃÜÔ¿  
-ssh -T git@github.com           ÑéÖ¤Ô¶³Ì²Ö¿âÁ¬½Ó£¨ÈôÊÇÂëÔÆÒª»»µØÖ·£©
-git remote add origin git@github.com:lazy-mapping/git_house.git  ¹ØÁªÔ¶³Ì²Ö¿â
-git remote		²é¿´µ±Ç°Ô¶³Ì²Ö¿â,	-v²ÎÊı£¬¿´È¨ÏŞ
-git clone Ô¶³ÌµØÖ·   		¿½±´²Ö¿â
+git --version     		æŸ¥çœ‹ç‰ˆæœ¬ã€‚
+git config --list        		æŸ¥çœ‹é…ç½®æ–‡ä»¶ã€‚
+git init			å½“å‰è·¯å¾„åˆå§‹åŒ–å·¥ä½œç›®å½•
+git add			æœ¬åœ°æ–‡ä»¶æ·»åŠ åˆ°æš‚å­˜åŒº
+git commit -m"æ³¨é‡Š"   	æš‚å­˜åŒºæ–‡ä»¶æäº¤åˆ°ä»“åº“,  -am"" æœ¬åœ°åˆ°ä»“åº“
+git status			æŸ¥çœ‹æš‚å­˜åŒºçŠ¶æ€
+git diff 			æŸ¥çœ‹å¯¹æ¯”
+git reset HEAD		æ’¤é”€æš‚å­˜åŒºå†…å®¹
+got reset --hard HEAD^  	ç‰ˆæœ¬å›é€€
+git rm 			åˆ é™¤æ–‡ä»¶ï¼Œ-få‚æ•°ï¼šå¼ºåˆ¶æ“ä½œ
+git mv			ç§»åŠ¨æ–‡ä»¶
+ls                            		æŸ¥çœ‹æ–‡ä»¶
+git branch		æŸ¥çœ‹åˆ†æ”¯
+git branch åå­—		åˆ›å»ºåˆ†æ”¯
+git branch -d åå­—		åˆ é™¤åˆ†æ”¯
+git checkout master/åå­—        åˆ‡æ¢ç»„ç»‡/åˆ†æ”¯
+git checkout -b åå­—                åˆ›å»ºå¹¶åˆ‡æ¢åˆ†æ”¯
+git merge åå­—		æŒ‡å®šåˆ†æ”¯åˆå¹¶åˆ°å½“å‰åˆ†æ”¯
+cat æ–‡ä»¶å			æµè§ˆæ–‡ä»¶å†…å®¹
+git log 			æŸ¥çœ‹æ—¥å¿—ï¼Œ --oneline	æŸ¥çœ‹å•è¡Œï¼Œ --graphç‚¹çº¿å›¾
+git tag -a v1.0.0		viç¼–è¾‘æ¨¡å¼ï¼Œåˆ›å»ºç‰ˆæœ¬ä¿¡æ¯ï¼Œ':wq'ä¿å­˜é€€å‡º
+git tag			æŸ¥çœ‹å†å²ç‰ˆæœ¬
+git log --oneline --decorate --graph		æŸ¥çœ‹æ ‡ç­¾ä¿¡æ¯
+ssh-keygen -t rsa -C "2267638690@qq.com" 	ç”Ÿæˆå¯†é’¥  
+ssh -T git@github.com           éªŒè¯è¿œç¨‹ä»“åº“è¿æ¥ï¼ˆè‹¥æ˜¯ç äº‘è¦æ¢åœ°å€ï¼‰
+git remote add origin git@github.com:lazy-mapping/git_house.git  å…³è”è¿œç¨‹ä»“åº“
+git remote		æŸ¥çœ‹å½“å‰è¿œç¨‹ä»“åº“,	-vå‚æ•°ï¼Œçœ‹æƒé™
+git remote rm åˆ é™¤è¿œç¨‹ä»“åº“
+git clone è¿œç¨‹åœ°å€   		æ‹·è´ä»“åº“
+æ–‡ä»¶è¦æ¨åˆ°è¿œç¨‹ï¼šè¦å…ˆpullæ‹‰ï¼Œåœ¨æ¨push
 git pull origin master --allow-unrelated-histories  
-ÏÈ°ÑÔ¶³Ì²Ö¿âÀ­ÏÂÀ´£¬»á×Ô¶¯ºÏ²¢;	 ²ÎÊı£º°ÑÁ½¶Î²»Ïà¸ÉµÄ·ÖÖ§½øĞĞÇ¿ĞĞºÏ²¢
-git push origin  		µ±Ç°·ÖÖ§ÍÆËÍµ½originÖ÷»úµÄ¶ÔÓ¦·ÖÖ§¡£
-git push -u origin master	±¾µØµÄmaster·ÖÖ§ÍÆËÍµ½originÖ÷»ú,ºóÃæ¾Í¿ÉÊ¹ÓÃgit push
+è¿œç¨‹ä»“åº“æ‹‰ä¸‹æ¥ï¼Œä¼šè‡ªåŠ¨åˆå¹¶;	 å‚æ•°ï¼šæŠŠä¸¤æ®µä¸ç›¸å¹²çš„åˆ†æ”¯è¿›è¡Œå¼ºè¡Œåˆå¹¶
+git push origin  		å½“å‰åˆ†æ”¯æ¨é€åˆ°originä¸»æœºçš„å¯¹åº”åˆ†æ”¯ã€‚
+git push -u origin master	æœ¬åœ°çš„masteråˆ†æ”¯æ¨é€åˆ°originä¸»æœº,åé¢å°±å¯ä½¿ç”¨git push
+git fecth    ä»è¿œç¨‹ä»“åº“ä¸‹è½½æ–°åˆ†æ”¯ä¸æ•°æ®
 
 
 
