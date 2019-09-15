@@ -20,6 +20,8 @@ git branch -d 名字		删除分支
 git checkout master/名字        切换组织/分支
 git checkout -b 名字                创建并切换分支
 git merge 名字		指定分支合并到当前分支
+git push origin dev                  推送本地分支到远程
+git push origin :sss                  删除远程指定分支
 cat 文件名			浏览文件内容
 git log 			查看日志， --oneline	查看单行， --graph点线图
 git tag -a v1.0.0 -m '说明'	vi编辑模式，创建版本信息，':wq'保存退出
