@@ -1,0 +1,10 @@
+PowerShell管理员身份运行
+
+得到本地软件安装包
+Get-AppxPackage -allusers | Select Name, PackageFullName
+
+安装命令，替换安装部分，如Microsoft.Office.OneNote_17.8366.57611.0_x64__8wekyb3d8bbwe
+Add-appxpackage -register "C:\Program Files\WindowsApps\ \Microsoft.Office.OneNote_17.8366.57611.0_x64__8wekyb3d8bbwe\appxmanifest.xml" -disabledevelopmentmode
+
+似乎是全部重装
+Get-AppXPackage -AllUsers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
