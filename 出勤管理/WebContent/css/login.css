@@ -1,0 +1,89 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	/* background: #34495e; */
+	background: url(../img/loginbg1.jpg) no-repeat fixed ;
+	background-size: 100% 100%;
+	}
+.box{
+	width: 300px;
+	padding: 40px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	/* transform中的translate（）方法
+	使用translate（）方法能够重新定义元素的坐标，实现平移的效果
+	语法：
+	transform:translate（x-value,y-value）;
+	*/
+	transform: translate(-50%,-50%);
+	background: #34495e;
+	/* background: url(../img/loginbg1.jpg) no-repeat; */
+	text-align: center;
+	overflow: hidden;
+	}
+.box h1{
+	color: white;
+	/* 将小写字母转换为大写 */
+	text-transform: uppercase;
+	font-weight: 500;
+	}
+.box input[type="text"],.box input[type="password"]{
+	border: 0;
+	background: none;
+	display: block;
+	
+	text-align: center;
+	border: 2px solid #3498db;
+	padding: 14px 10px;
+	width: 200px;
+	outline: none;
+	color: white;
+	border-radius: 24px;
+	transition: 0.25s;
+	}
+.box input[type="text"]{
+	margin: 20px auto;
+}
+.box input[type="password"]{
+	margin: 5px auto;
+}
+.box input[type="text"]:focus,.box input[type="password"]:focus{
+	width: 280px;
+	border-color: #2ecc71;
+	}
+.box input[type="submit"]{
+	border: 0;
+	background: none;
+	display: block;
+	margin: 40px auto;
+	text-align: center;
+	border: 2px solid #2ecc71;
+	padding: 14px 40px;
+	outline: none;
+	color: white;
+	/* 设置圆角边框 */
+	border-radius: 24px;
+	/* transition是个简写的过渡属性
+	使用transition属性设置多个过渡效果时，
+	它的各个参数必须按照顺序进行定义，不能颠倒。
+	语法：transition：property duration timing-function delay;
+	例如：transition:border-radius 5s ease-in-out 2s;
+	 */
+	transition: 0.25s;
+	cursor: pointer;
+	}
+.box input[type="submit"]:hover{
+	background: #2ecc71;
+	}
+.box a{
+	display: block;
+	float: right;
+	padding-right: 45px;
+	text-decoration: none;
+	color: #ecf0f1;
+}
+.box a:hover{
+	color: #16a085;
+}
