@@ -7,8 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Hello springMVC</h1>
-访问路径：  服务器+   /helloworld
-例如：http://localhost:8080/springMVC-helloWorld/helloworld
+用户列表，分页显示<br>
+地址中添加参数，例如： http://localhost:8080/springMVC-helloWorld/user/list?currentpage=1&pagesize=50
 </body>
 </html>
