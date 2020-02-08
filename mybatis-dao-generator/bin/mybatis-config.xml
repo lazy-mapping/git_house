@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- 引入数据库配置文件 -->
+	<properties resource="dbconfig.properties"></properties>
+	
+	<!-- 设置全局-表-一个属性自增, 如id自增，可以不写 -->
+	<settings>
+		<setting name="useGeneratedKeys" value="true"/>
+	</settings>
+	
+	<!-- 定义别名 -->
+	<typeAliases>
+		<!-- <typeAlias type="com.mybatis.pojo.Blog" alias="Blog"/> 
+		下面一句，效果一样-->
+		<package name="com.mybatis.pojo"/>
+	</typeAliases>
+	
+    <!--配置数据源，这里使用的是MySQL-->
+    <environments default="development">
+        <environment id="development">
+            <!--指定事务管理的类型，这里简单使用Java的JDBC的提交和回滚设置-->
+            <transactionManager type="JDBC"></transactionManager>
+            
+            <!--dataSource 指连接源配置，POOLED是JDBC连接对象的数据源连接池的实现-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driverClassName}"></property>
+                <property name="url" value="${url}"></property>
+                <property name="username" value="${username}"></property>
+                <property name="password" value="${password}"></property>
+            </dataSource>
+        </environment>
+    </environments>
+    
+    <mappers>
+    <!--这是告诉Mybatis区哪找持久化类的映射文件，对于在src下的文件直接写文件名，
+            如果在某包下，则要写明路径,如：com/mybatistest/config/User.xml
+        <mapper resource="User.xml"></mapper>-->
+      <package name="com.mybatisBlog.mapper"/>  
+    </mappers>
+    
+</configuration>
