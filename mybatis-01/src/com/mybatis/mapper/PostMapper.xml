@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mybatis.mapper.PostMapper" >
+	
+	<resultMap type="Post" id="postResultMap">
+		<id column="id" property="id" jdbcType="INTEGER"></id>
+		<collection property="commentList" column="id" javaType="ArrayList" ofType="Comment"
+		select="com.mybatis.mapper.CommentMapper.selectCommentByPostId"></collection>
+	</resultMap>
+	
+	<select id="selectPostById" parameterType="int" resultMap="postResultMap">
+		select * from post where id = #{id}
+	</select>
+	
+</mapper>

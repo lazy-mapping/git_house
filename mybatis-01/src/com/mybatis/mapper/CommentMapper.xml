@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mybatis.mapper.CommentMapper" >
+	
+	<resultMap type="Comment" id="commentResultMap">
+		<id column="id" property="id" jdbcType="INTEGER"></id>
+	</resultMap>
+	
+	<select id="selectCommentByPostId" parameterType="int" resultMap="commentResultMap">
+		select * from comment where postId = #{postId}
+	</select>
+	
+	<select id="selectCommentById" parameterType="int" resultMap="commentResultMap">
+		select * from comment where id = #{id}
+	</select>
+</mapper>
