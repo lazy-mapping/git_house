@@ -42,10 +42,10 @@ public class BlogExampleTest {
 			BlogMapper blogMapper= session.getMapper(BlogMapper.class);
 			
 			Blog blog1 = blogMapper.selectByPrimaryKey(1);
-			System.out.print("结果已查询\n");
+			System.out.print(blog1+"结果已查询\n");
 			
 			Blog blog2 = blogMapper.selectByPrimaryKey(1);
-			System.out.print("结果已查询：从缓存中获取数据\n");
+			System.out.print(blog2+"结果已查询：从缓存中获取数据\n");
 			
 			session.close();
 			System.out.print("session 已关闭，仅执行一次sql查询");
@@ -67,7 +67,7 @@ public class BlogExampleTest {
 			System.out.println("执行更新操作，刷新缓存");
 			
 			Blog blog2 = blogMapper.selectByPrimaryKey(1);
-			System.out.print("重新执行查询\n");
+			System.out.print(blog2+"重新执行查询\n");
 			
 			session.commit();
 			session.close();
@@ -84,7 +84,7 @@ public class BlogExampleTest {
 			SqlSession session1 = MyBatisUtil.getSqlSession();
 			BlogMapper blogMapper1= session1.getMapper(BlogMapper.class);
 			Blog blog1 = blogMapper1.selectByPrimaryKey(1);
-			System.out.print("结果已查询\n");
+			System.out.print(blog1+"结果已查询\n");
 			
 		// 缓存刷新
 		/**
@@ -96,7 +96,7 @@ public class BlogExampleTest {
 			SqlSession session2 = MyBatisUtil.getSqlSession();
 			BlogMapper blogMapper2= session2.getMapper(BlogMapper.class);
 			Blog blog2 = blogMapper2.selectByPrimaryKey(1);
-			System.out.print("重新执行查询？\n");
+			System.out.print(blog2+"重新执行查询？\n");
 			session2.close();
 			
 			System.out.print("session 已关闭。关闭二级缓存，执行两次sql查询； 开启就执行一次。");
