@@ -8,7 +8,6 @@
 </head>
 <body>
 <h1>Hello springMVC</h1>
-访问路径：  服务器+   /helloworld
-例如：http://localhost:8080/springMVC-helloWorld/helloworld
+访问路径：  http://localhost:8080/springMVC-helloWorld/helloworld
 </body>
 </html>
