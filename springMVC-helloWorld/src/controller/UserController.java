@@ -30,17 +30,17 @@ public class UserController {
 	public String edit(@PathVariable(value="id") Integer id){
 		//打开回显页
 		System.out.println("id:" + id);
-		return "edit";
+		return "actingIndex";
 	}
 	
-	@RequestMapping(value="/user/{id}", method=RequestMethod.DELETE)
+	@RequestMapping(value="/user1/{id}", method=RequestMethod.DELETE)
 	public String delete(@PathVariable(value="id") Integer id){
 		//执行删除
 		System.out.println("id:" + id);
 		return "edit";
 	}
 	
-	@RequestMapping(value="/user/{id}", method=RequestMethod.PUT)
+	@RequestMapping(value="/user2/{id}", method=RequestMethod.PUT)
 	public String update(@PathVariable(value="id") Integer id){
 		//执行更新
 		System.out.println("id:" + id);
