@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 设置struts2的模式为开发模式，优势自动加载配置文件（struts.xml）和资源文件，显示更多的错误信息 -->
+	<constant name="struts.devMode" value="true"></constant>
+	
+	<!-- 设置UI主题，去掉struts2提供的样式，设置简单主题样式，由美工添加样式-->
+	<constant name="struts.ui.theme" value="simple"></constant>
+	
+	<!-- 改变struts方法的后缀，从action改变的成do -->
+	<constant name="struts.action.extension" value="do"></constant>
+	
+	<!-- 系统管理 -->
+	<package name="system" namespace="/system" extends="json-default">
+		
+		<!-- 自定义拦截器，实现异常处理+细颗粒度权限控制 -->
+		<interceptors>
+		   <!-- 声明拦截器 -->
+		   <interceptor name="errorAndLimitInterceptor" class="elec.utils.ErrorAndLimitInterceptor" />
+		   <!-- 配置拦截器栈 -->
+		   <interceptor-stack name="myErrorAndLimitInterceptor">
+		               <interceptor-ref name="defaultStack" />
+		               <!-- 将自定义拦截器放置到默认栈的后面 -->
+		               <interceptor-ref name="errorAndLimitInterceptor">
+		               	   <!-- 配置哪些方法不被拦截器 -->
+		   				   <param name="excludeMethods">menuHome,title,left,change,loading,logout,alermStation,alermDevice,showMenu</param>
+		               </interceptor-ref>
+		   </interceptor-stack>
+		</interceptors>
+		<!-- 覆盖底层的拦截器栈 对包中的所有action都有效 -->
+		<default-interceptor-ref name="myErrorAndLimitInterceptor"/>
+		
+		<!-- 全局转发 -->
+		<global-results>
+	    	<result name="errorMsg">/errorMsg.jsp</result>
+	    	<result name="close">/close.jsp</result>
+	    </global-results>
+	    <global-exception-mappings>
+	    	<exception-mapping result="errorMsg" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+		
+		<!-- 测试JSP -->
+		<action name="elecTextAction_*" class="elecTextAction" method="{1}">
+			<result name="save">/WEB-INF/page/system/textAdd.jsp</result>
+		</action>
+		
+		<!-- 系统登录 -->
+		<action name="elecMenuAction_*" class="elecMenuAction" method="{1}">
+			<result name="menuHome">/WEB-INF/page/menu/home.jsp</result>
+			<result name="title">/WEB-INF/page/menu/title.jsp</result>
+			<result name="left">/WEB-INF/page/menu/left.jsp</result>
+			<result name="change">/WEB-INF/page/menu/change.jsp</result>
+			<result name="loading">/WEB-INF/page/menu/loading.jsp</result>
+			<result name="logout" type="redirect">/index.jsp</result>
+			<result name="alermStation">/WEB-INF/page/menu/alermStation.jsp</result>
+			<result name="alermDevice">/WEB-INF/page/menu/alermDevice.jsp</result>
+			<result name="error">/index.jsp</result>
+			<result name="showMenu" type="json">
+			    <!-- 将action中值传入json -->
+				<param name="root">action</param>
+				<!-- json过滤 -->
+				<param name="includeProperties">modelList\[\d+\]\.mid,modelList\[\d+\]\.pid,modelList\[\d+\]\.isParent,modelList\[\d+\]\.target,modelList\[\d+\]\.name,modelList\[\d+\]\.icon,modelList\[\d+\]\.url</param>
+			</result>
+		</action>
+		
+		<!-- 运行监控 -->
+		<action name="elecCommonMsgAction_*" class="elecCommonMsgAction" method="{1}">
+			<result name="home">/WEB-INF/page/system/actingIndex.jsp</result>
+			<result name="save" type="redirectAction">
+				<param name="actionName">elecCommonMsgAction_home.do</param>
+			</result>
+		</action>
+		
+		<!-- 导出设置 -->
+		<action name="elecExportFieldsAction_*" class="elecExportFieldsAction" method="{1}">
+			<result name="setExportExcel">/WEB-INF/page/system/exportExcel.jsp</result>
+		</action>
+		
+		<!-- 数据字典 -->
+		<action name="elecSystemDDLAction_*" class="elecSystemDDLAction" method="{1}">
+			<result name="home">/WEB-INF/page/system/dictionaryIndex.jsp</result>
+			<result name="edit">/WEB-INF/page/system/dictionaryEdit.jsp</result>
+			<result name="save" type="redirectAction">
+				<param name="actionName">elecSystemDDLAction_home.do</param>
+			</result>
+		</action>
+		
+		<!-- 用户管理 -->
+		<action name="elecUserAction_*" class="elecUserAction" method="{1}">
+			<result name="home">/WEB-INF/page/system/userIndex.jsp</result>
+		    <result name="add">/WEB-INF/page/system/userAdd.jsp</result>
+			<result name="findJctUnit" type="json">
+				<param name="includeProperties">\[\d+\]\.ddlCode,\[\d+\]\.ddlName</param>
+			</result>
+			<result name="checkUser" type="json">
+			<!-- 模型驱动存在一个message属性，将查询的结果放置到字符串类型的message中，就可以传递给页面 -->
+				<param name="root">message</param>
+			</result>
+			<result name="edit">/WEB-INF/page/system/userEdit.jsp</result>
+			<result name="delete" type="redirectAction">
+				<param name="actionName">elecUserAction_home.do</param>
+			</result>
+		</action>
+		
+		<!-- 角色管理 -->
+		<action name="elecRoleAction_*" class="elecRoleAction" method="{1}">
+			<result name="home">/WEB-INF/page/system/roleIndex.jsp</result>
+			<result name="edit">/WEB-INF/page/system/roleEdit.jsp</result>
+			<result name="save" type="redirectAction">
+				<param name="actionName">elecRoleAction_home.do</param>
+			</result>
+		</action>
+	</package>
+	
+	<!-- 资料图纸管理 -->
+	<package name="datachart" namespace="/datachart" extends="system">
+		<action name="elecFileUploadAction_*" class="elecFileUploadAction" method="{1}">
+			<result name="home">/WEB-INF/page/dataChart/dataChartIndex.jsp</result>
+			<result name="add">/WEB-INF/page/dataChart/dataChartAdd.jsp</result>
+			<result name="addList">/WEB-INF/page/dataChart/dataChartAddList.jsp</result>
+			<result name="save">/close.jsp</result>
+			<result name="success" type="stream">
+			    <param name="inputName">inputStream</param>
+			    <param name="contentDisposition">attachment;filename="${#request.filename}"</param>
+			    <param name="bufferSize">1024</param>
+			</result>
+			<result name="delete" type="redirectAction">
+				<param name="actionName">elecFileUploadAction_home.do</param>
+			</result>
+		</action>
+	</package>
+</struts>

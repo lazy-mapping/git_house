@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:web="http://java.sun.com/xml/ns/javaee" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	                    http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  	<display-name>elecProject</display-name>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+    	<welcome-file>index.jsp</welcome-file>
+  	</welcome-file-list>
+  	
+  	<!-- 自定义过滤器，要放置到struts2的过滤器的上面 -->
+  	<filter>
+  		<filter-name>SystemFilter</filter-name>
+  		<filter-class>elec.utils.SystemFilter</filter-class>
+  	</filter>
+  	<filter-mapping>
+  		<filter-name>SystemFilter</filter-name>
+  		<url-pattern>*.jsp</url-pattern>
+  	    <url-pattern>*.do</url-pattern>
+  	</filter-mapping>
+  	
+   <!-- 
+	添加spring解决hibernate懒加载的问题，过滤器 该过滤器一定要放置到struts2过滤器的前面
+	原理：延迟了Session的关闭时间，在页面上关闭
+	-->
+	<filter>
+		<filter-name>OpenSessionInViewFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>OpenSessionInViewFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	
+  	<!-- 添加struts2的过滤器，这是struts2执行的核心 -->
+  	<filter>
+  		<filter-name>struts2</filter-name>
+  		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+  	</filter>
+  	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<!-- 只过滤这两钟文件，不限制ckeditor的功能 -->
+		<url-pattern>*.jsp</url-pattern>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	
+	<!-- 当web容器启动的时候，自动加载spring容器 -->
+  	<context-param>
+  		<param-name>contextConfigLocation</param-name>
+  		<param-value>classpath:beans.xml</param-value>
+  	</context-param>
+  	<listener>
+  		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  	</listener>
+  	
+	<!-- 添加ckeditor+ckfineder文本编辑器 begin -->
+	<servlet>
+		<servlet-name>ConnectorServlet</servlet-name>
+		<servlet-class>com.ckfinder.connector.ConnectorServlet</servlet-class>
+		<init-param>
+			<param-name>XMLConfig</param-name>
+			<param-value>/WEB-INF/config.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ConnectorServlet</servlet-name>
+		<url-pattern>
+			/ckfinder/core/connector/java/connector.java
+		</url-pattern>
+	</servlet-mapping>
+	<!-- 文件上传过滤器 -->
+	<filter>
+		<filter-name>FileUploadFilter</filter-name>
+		<filter-class>com.ckfinder.connector.FileUploadFilter</filter-class>
+                <init-param>
+                    <param-name>sessionCookieName</param-name>
+                    <param-value>JSESSIONID</param-value>
+                </init-param>
+                <init-param>
+                    <param-name>sessionParameterName</param-name>
+                    <param-value>jsessionid</param-value>
+                </init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>FileUploadFilter</filter-name>
+		<url-pattern>
+			/ckfinder/core/connector/java/connector.java
+     	 </url-pattern>
+	</filter-mapping>
+	<!-- 添加ckeditor+ckfineder文本编辑器 end -->
+	<!-- 定义session存活周期, 20分钟-->
+	<session-config>
+		<session-timeout>20</session-timeout>
+	</session-config>  
+</web-app>
