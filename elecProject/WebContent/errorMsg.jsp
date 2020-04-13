@@ -1,6 +1,6 @@
 <%@ page language="java"  pageEncoding="UTF-8"%>
 
-<HTML><HEAD><TITLE>国家电力监测中心设备资源管理系统</TITLE>
+<HTML><HEAD><TITLE>电力设备检修管理系统</TITLE>
 <LINK href="${pageContext.request.contextPath }/css/MainPage.css" type="text/css" rel="stylesheet">
 <LINK href="${pageContext.request.contextPath }/css/buttonstyle.css" type="text/css" rel="stylesheet">
 

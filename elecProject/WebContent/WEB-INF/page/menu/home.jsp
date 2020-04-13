@@ -3,7 +3,7 @@
 
 <HTML>
 <HEAD>
-<TITLE>国家电力监测中心首页</TITLE>
+<TITLE>电力设备检修管理系统</TITLE>
 <LINK href="/css/Font.css" type="text/css" rel="stylesheet">
 
 <STYLE>BODY {

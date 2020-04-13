@@ -29,7 +29,10 @@ eval("document.location='"+action+"'");
 <FORM id="Form1" name="Form1"  method="post">
 <table border="0" width="100%" height="9" cellspacing="0" cellpadding="0">
   <tr>
-    <td width="100%" colspan="4" background="${pageContext.request.contextPath }/images/title.jpg" height="58">　</td>
+    <td width="100%" colspan="4" background="${pageContext.request.contextPath }/images/elecTitle.jpg" height="58" 
+    style="font-size:30px; text-align:center; color:#FFFFFF;" >　
+    <font >电  力  设  备  检  修  管  理  系  统 </font> 
+    </td>
   </tr>
   <tr>
     <td width="100%" height="1" bgcolor="#66C89C" colspan="4"><img border="0" src="${pageContext.request.contextPath }/images/titleline.jpg" width="100%" height="3"></td>

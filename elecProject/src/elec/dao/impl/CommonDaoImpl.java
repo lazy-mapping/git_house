@@ -15,6 +15,7 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import elec.utils.GenericTypeUtils;
+import elec.utils.PageInfo;
 import elec.dao.ICommonDao;
 
 
@@ -124,6 +125,7 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<
 		return buffer.toString();
 	}
 	
+	
 	//添加二级缓存，针对数据字典
 	public List<T> findCollectionByConditionNoPageCache(String condition, Object[] params,
 			Map<String, String> orderby) {
@@ -152,6 +154,44 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<
 				return list;
 	}
 	
+	
+	
+	/**指定页面传递的查询条件，查询对应的结果集信息，返回List<ElecText>，分页*/
+	/**
+		SELECT * FROM elec_text o WHERE 1=1      #Dao层
+		AND o.textName LIKE '%张%'           #Service层
+		AND o.textRemark LIKE '%张%'         #Service层
+		ORDER BY o.textDate ASC,o.textRemark DESC  #Service层
+	 */
+	public List<T> findCollectionByConditionWithPage(String condition,
+			final Object[] params, Map<String, String> orderby,final PageInfo pageInfo) {
+		String hql = "select o from "+entityClass.getSimpleName()+" o where 1=1 ";
+		//解析map集合，获取排序的语句
+		String orderbyhql = this.orderby(orderby);
+		final String finalHql = hql + condition + orderbyhql;
+		@SuppressWarnings({ "unchecked", "rawtypes" })
+		List<T> list = (List<T>) this.getHibernateTemplate().execute(new HibernateCallback() {
+
+			public Object doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				Query query = session.createQuery(finalHql);
+				if(params!=null && params.length>0){
+					for(int i=0;i<params.length;i++){
+						query.setParameter(i, params[i]);
+					}
+				}
+				/**添加分页 begin*/
+				pageInfo.setTotalResult(query.list().size());//先获取检索数据的总记录数
+				query.setFirstResult(pageInfo.getBeginResult());//当前页从第几条开始检索，0表示第1条记录（默认值）
+				query.setMaxResults(pageInfo.getPageSize());//当前页最多显示多少条记录
+				/**添加分页 end*/
+				return query.list();
+			}
+		});
+		return list;
+	}
+	
+	
 	/**
 	 * 按照投影条件查询对应的结果（一般用在动态导出excel）
 	SELECT selectCondition FROM elec_text o WHERE 1=1      #Dao层
@@ -159,12 +199,14 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<
 	AND o.textRemark LIKE '%张%'         #Service层
 	ORDER BY o.textDate ASC,o.textRemark DESC  #Service层
  */
+	@SuppressWarnings("rawtypes")
 	public List findCollectionByConditionNoPageWithSelectCondition(String condition,
 			final Object[] params, Map<String, String> orderby,String selectCondition) {
 		String hql = "select "+selectCondition+" from "+entityClass.getSimpleName()+" o where 1=1 ";
 		//解析map集合，获取排序的语句
 		String orderbyhql = this.orderby(orderby);
 		final String finalHql = hql + condition + orderbyhql;
+		@SuppressWarnings({ "unchecked" })
 		List<T> list = (List<T>) this.getHibernateTemplate().execute(new HibernateCallback() {
 	
 			public Object doInHibernate(Session session)
@@ -181,6 +223,8 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<
 		return list;
 	}
 	
+	
+	
 	//解析map集合，获取排序的语句，ORDER BY o.textDate ASC,o.textRemark DESC
 	private String orderby(Map<String, String> orderby) {
 		StringBuffer buffer = new StringBuffer("");
@@ -194,4 +238,6 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<
 		}
 		return buffer.toString();
 	}
+
+	
 }

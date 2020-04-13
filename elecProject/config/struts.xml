@@ -100,8 +100,17 @@
 			</result>
 			<result name="edit">/WEB-INF/page/system/userEdit.jsp</result>
 			<result name="delete" type="redirectAction">
-				<param name="actionName">elecUserAction_home.do</param>
+				<param name="actionName">elecUserAction_home.do?pageNO=${#request.pageNO}</param>
 			</result>
+			<result name="list">/WEB-INF/page/system/userList.jsp</result>
+			<result name="success" type="stream">
+		     	<param name="contentType">application/vnd.ms-excel</param>
+		     	<!--使用inputName输出值栈中流的值-->
+		     	<param name="inputName">inputStream</param>
+		     	<param name="contentDisposition">attachment;filename="${#request.filename}"</param>
+		     	<param name="bufferSize">1024</param>
+		    </result>
+		    <result name="importPage">/WEB-INF/page/system/userImport.jsp</result>
 		</action>
 		
 		<!-- 角色管理 -->

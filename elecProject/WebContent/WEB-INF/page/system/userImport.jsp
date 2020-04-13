@@ -47,6 +47,7 @@
         </tr>
       </table>
     </s:form>
+    
       <s:if test="#request.errorList!=null && #request.errorList.size()>0">
           <!-- 显示错误信息 -->
 	      <table border="0" width="100%" cellspacing="0" cellpadding="0">

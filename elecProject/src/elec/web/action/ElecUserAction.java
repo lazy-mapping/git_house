@@ -53,8 +53,17 @@ public class ElecUserAction extends BaseAction<ElecUser> {
 		//2:指定查询条件，查询用户集合
 		List<ElecUser> userList = elecUserService.findUserListByCondition(elecUser);
 		request.setAttribute("userList", userList);		
-		//故意抛出异常，测试异常拦截器
-		/*
+		
+		/**添加分页begin*/
+		//用来判断跳转页面的标识
+		String initpage = request.getParameter("initpage");
+		if(initpage!=null && initpage.equals("1")){
+			return "list";
+		}
+		/**添加分页end*/
+		
+		
+		/* 故意抛出异常，测试异常拦截器
 		 * try { ElecUser user = null; user.getBirthday(); } catch (Exception e) {
 		 * e.printStackTrace(); throw new RuntimeException("对不起！报错了！"); }
 		 */		
@@ -179,10 +188,6 @@ public class ElecUserAction extends BaseAction<ElecUser> {
 	/**  
 	* @Name: exportExcel
 	* @Description: 导出excel
-	* @Author: 刘洋（作者）
-	* @Version: V1.00 （版本号）
-	* @Create Date: 2013-11-30（创建日期）
-	* @Parameters: 无
 	* @Return: 使用struts2的方式
 	*/
 	@AnnotationLimit(mid = "fg",pid = "fa")
@@ -195,6 +200,7 @@ public class ElecUserAction extends BaseAction<ElecUser> {
 			//导出excel
 			ExcelFileGenerator excelFileGenerator = new ExcelFileGenerator(fieldName, fieldData);
 			ByteArrayOutputStream os = new ByteArrayOutputStream();
+			
 			//重置输出流（可以不加，但是一定保证response里面没有其他数据，建议加上）
 			response.reset();
 			String filename = "用户报表（"+new SimpleDateFormat("yyyyMMddHHmmss").format(new Date())+"）.xls";
@@ -216,10 +222,6 @@ public class ElecUserAction extends BaseAction<ElecUser> {
 	/**  
 	* @Name: importPage
 	* @Description: 跳转到导入页面（类似文件上传）
-	* @Author: 刘洋（作者）
-	* @Version: V1.00 （版本号）
-	* @Create Date: 2013-11-30（创建日期）
-	* @Parameters: 无
 	* @Return: 跳转到system/userImport.jsp
 	*/
 	@AnnotationLimit(mid = "fh",pid = "fa")
@@ -230,10 +232,6 @@ public class ElecUserAction extends BaseAction<ElecUser> {
 	/**  
 	* @Name: importData
 	* @Description: 从excel中读取数据内容，批量导入到数据库中
-	* @Author: 刘洋（作者）
-	* @Version: V1.00 （版本号）
-	* @Create Date: 2013-11-30（创建日期）
-	* @Parameters: 无
 	* @Return: 跳转到system/userImport.jsp
 	*/
 	@AnnotationLimit(mid = "fi",pid = "fa")
@@ -243,6 +241,7 @@ public class ElecUserAction extends BaseAction<ElecUser> {
 			File file = elecUser.getFile();
 			//从excel中读取数据，并将数据存放到ArrayList中
 			GenerateSqlFromExcel excel = new GenerateSqlFromExcel();
+			
 			@SuppressWarnings("static-access")
 			ArrayList<String[]> arrayList = excel.generateUserSql(file);
 			//定义一个错误的集合List<String>，存放错误信息，如果excel文件存在错误，就将错误的集合的在页面中显示

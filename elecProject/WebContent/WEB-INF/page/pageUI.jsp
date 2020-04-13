@@ -28,16 +28,17 @@
 		             <td width="21%" align="right">至第<input size="1" type="text" name="goPage" >页
 		
 		
-		
 		             <u><a href="#" onClick="gotopage('elecUserAction_home.do','go')">确定</a></u></td>
-		             
+		             <!-- 当前页 -->
 		             <td><input type="hidden" name="pageNO" value="${page.pageNo }" ></td> 
+		             <!-- 上页 --> 
 		             <td><input type="hidden" name="prevpageNO" value="${page.pageNo-1 }"></td>
+		             <!-- 下页 --> 
 		             <td><input type="hidden" name="nextpageNO" value="${page.pageNo+1 }"></td>
+		             <!-- 总页 -->
 		             <td><input type="hidden" name="sumPage" value="${page.sumPage }" ></td>
 	           </tr>
          </s:if>
-          
         </table>       
       </td>
     </tr> 

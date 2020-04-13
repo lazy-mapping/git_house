@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import elec.utils.PageInfo;
+
 public interface ICommonDao <T>{
 	/**
 	 * 底层封装的方法
@@ -15,7 +17,16 @@ public interface ICommonDao <T>{
 	void deleteObjectByCollection(List<T> list);
 	
 	List<T> findCollectionByConditionNoPage(String condition,Object[] params, Map<String, String> orderby);
+	
 	List<T> findCollectionByConditionNoPageCache(String condition, Object[] params,Map<String, String> orderby);
+	
+	List<T> findCollectionByConditionWithPage(String condition,
+			Object[] params, Map<String, String> orderby, PageInfo pageInfo);
+	
 	List findCollectionByConditionNoPageWithSelectCondition(String condition,
 			Object[] params, Map<String, String> orderby, String selectCondition);
+	
+	
+	
+	
 }

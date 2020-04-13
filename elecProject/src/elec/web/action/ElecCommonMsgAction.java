@@ -27,7 +27,7 @@ public class ElecCommonMsgAction extends BaseAction<ElecCommonMsg> {
 	 * @Description: 运行监控的首页显示
 	 * @Return: 跳转到system/actingIndex.jsp
 	 */
-	@AnnotationLimit(mid = "ap",pid = "am")
+	@AnnotationLimit(mid = "ap",pid = "aa")
 	public String home() {
 		// 1：查询运行监控表，获取运行监控表中的数据，返回ElecCommonMsg对象
 		ElecCommonMsg commonMsg = elecCommonMsgService.findElecCommonMsg();

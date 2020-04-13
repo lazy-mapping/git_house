@@ -10,12 +10,14 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.struts2.ServletActionContext;
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import elec.utils.PageInfo;
 import elec.dao.IElecExportFieldsDao;
 import elec.dao.IElecSystemDDLDao;
 import elec.dao.IElecUserDao;
@@ -79,7 +81,13 @@ public class ElecUserServiceImpl implements IElecUserService {
 		//排序，按照入职时间的降序排列
 		Map<String, String> orderby = new LinkedHashMap<String, String>();
 		orderby.put("o.onDutyDate", "desc");
-		List<ElecUser> list = elecUserDao.findCollectionByConditionNoPage(condition, params, orderby);
+		
+		/**添加分页 begin*/
+		PageInfo pageInfo = new PageInfo(ServletActionContext.getRequest());
+		List<ElecUser> list = elecUserDao.findCollectionByConditionWithPage(condition, params, orderby,pageInfo);
+		ServletActionContext.getRequest().setAttribute("page",pageInfo.getPageBean() );
+		/**添加分页 end*/
+		
 		/**3：涉及到数据字段字段的时候，要将数据项的编号转换成数据项值*/
 		this.userPOListToVOList(list);
 		return list;
@@ -261,11 +269,7 @@ public class ElecUserServiceImpl implements IElecUserService {
 	/**  
 	* @Name: saveUserFromExcel
 	* @Description: 从excel中读取数据，批量保存到数据库表汇总
-	* @Author: 刘洋（作者）
-	* @Version: V1.00 （版本号）
-	* @Create Date: 2013-11-30（创建日期）
 	* @Parameters: List<ElecUser>：PO对象的集合
-	* @Return: 无
 	*/
 	@Transactional(isolation=Isolation.DEFAULT,propagation=Propagation.REQUIRED,readOnly=false)
 	public void saveUserFromExcel(List<ElecUser> list) {
@@ -280,15 +284,8 @@ public class ElecUserServiceImpl implements IElecUserService {
 	/**  
 	* @Name: findExcelFieldName
 	* @Description: 组织动态导出excel的标题数据
-	* @Author: 刘洋（作者）
-	* @Version: V1.00 （版本号）
-	* @Create Date: 2013-11-28（创建日期）
-	* @Parameters: 无
 	* @Return: ArrayList<String>：存放excel的数据标题
 	* 		ArrayList<String> fieldName：
-				fieldName.add("登录名");
-				fieldName.add("用户姓名");
-				...
 	*/
 	public ArrayList<String> findExcelFieldName() {
 		//查询导出设置表，获取导出设置中存放的导出excel的字段的中文名称
@@ -300,24 +297,8 @@ public class ElecUserServiceImpl implements IElecUserService {
 	/**  
 	* @Name: findExcleFieldData
 	* @Description: 组织动态导出excel的数据内容
-	* @Author: 刘洋（作者）
-	* @Version: V1.00 （版本号）
-	* @Create Date: 2013-11-28（创建日期）
-	* @Parameters: 无
 	* @Return: ArrayList<ArrayList<String>>：存放excel的数据内容：
 	* 		ArrayList<ArrayList<String>> fieldData//存放所有行的数据
-
-			ArrayList<String> data1;//存放每1行的数据
-			data1.add("liubei");
-			data1.add("刘备");
-			
-			
-			ArrayList<String> data2;//存放每1行的数据
-			data2.add("zhugeliang");
-			data2.add("诸葛亮");
-			
-			fieldData.add(data1);
-			fieldData.add(data2);
 	*/
 	public ArrayList<ArrayList<String>> findExcleFieldData(ElecUser elecUser) {
 		//最终的结果集
@@ -366,8 +347,9 @@ public class ElecUserServiceImpl implements IElecUserService {
 		//排序，按照入职时间的降序排列
 		Map<String, String> orderby = new LinkedHashMap<String, String>();
 		orderby.put("o.onDutyDate", "desc");
+		
 		//查询对应的结果(返回所有的结果)
-		List list = elecUserDao.findCollectionByConditionNoPageWithSelectCondition(condition, params, orderby,selectCondition);
+		List<?> list = elecUserDao.findCollectionByConditionNoPageWithSelectCondition(condition, params, orderby,selectCondition);
 		//遍历所有的结果
 		if(list!=null && list.size()>0){
 			for(int i=0;i<list.size();i++){

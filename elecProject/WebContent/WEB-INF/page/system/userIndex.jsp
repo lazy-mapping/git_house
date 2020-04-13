@@ -58,10 +58,12 @@
 		
 	<body >
 		<form id="Form1" name="Form1" action="${pageContext.request.contextPath}/system/elecUserAction_home.do" method="post" style="margin:0px;"> 
-			<!-- 当前第几页 -->
+			<!-- form1隐藏域，当前第几页 -->
 			<s:hidden name="pageNO"></s:hidden>
+			
 			<!-- 判断是跳转userIndex.jsp还是跳转userList.jsp的标识 -->
 			<s:hidden name="initpage" value="1"></s:hidden>
+			
 			<table cellspacing="1" cellpadding="0" width="90%" align="center" bgcolor="#f5fafe" border="0">
 				<TR height=10><td></td></TR>
 				<tr>
@@ -130,14 +132,14 @@
 						 onclick="exportExcel()">&nbsp;&nbsp;
 						<input style="font-size:12px; color:black; height=20;width=80" id="BT_Export" type="button" value="导入" name="BT_Export" 
 						 onclick="openWindow('${pageContext.request.contextPath }/system/elecUserAction_importPage.do','700','400')">&nbsp;&nbsp;
-						<input style="font-size:12px; color:black; height=20;width=80" id="BT_Export" type="button" value="人员统计（所属单位）" name="BT_Export" 
+						<%-- <input style="font-size:12px; color:black; height=20;width=80" id="BT_Export" type="button" value="人员统计（所属单位）" name="BT_Export" 
 						 onclick="openWindow('${pageContext.request.contextPath }/system/elecUserAction_chartUser.do','800','600')">&nbsp;&nbsp;
 						<input style="font-size:12px; color:black; height=20;width=80" id="BT_Export" type="button" value="人员统计（性别）" name="BT_Export" 
-						 onclick="openWindow('${pageContext.request.contextPath }/system/elecUserAction_chartUserFCF.do','800','600')">&nbsp;&nbsp;
+						 onclick="openWindow('${pageContext.request.contextPath }/system/elecUserAction_chartUserFCF.do','800','600')">&nbsp;&nbsp; --%>
 					</td>
 				</tr>
 					
-			<tr>
+			    <tr>
 				<td class="ta_01" align="center" bgColor="#f5fafe" colspan="2">			
 					
 									
@@ -194,19 +196,15 @@
 									</tr>
 								</s:iterator>
 							</s:if>
-							
 								
 						</table>					
 						
 					</td>
-				</tr>  
-				<%@include file="/WEB-INF/page/pageUI.jsp" %>      
+				    </tr>  
+				    <%@include file="/WEB-INF/page/pageUI.jsp" %>      
 			</TBODY>
 		</table>
 		</form>
-
-
-
 
 	</body>
 </HTML>
