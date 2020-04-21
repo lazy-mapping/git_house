@@ -8,12 +8,15 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import elec.domain.ElecDevice;
 import elec.domain.ElecOverhaulRecord;
 import elec.domain.ElecSystemDDL;
 import elec.service.IElecSystemDDLService;
+import elec.service.IElecDeviceService;
 import elec.service.IElecRepairService;
 import elec.utils.AnnotationLimit;
 import elec.utils.ValueStackUtils;
+import javassist.expr.NewArray;
 
 @SuppressWarnings("serial")
 @Controller("elecRepairAction")
@@ -21,9 +24,13 @@ import elec.utils.ValueStackUtils;
 public class ElecRepairAction extends BaseAction<ElecOverhaulRecord> {
 	
 	  private ElecOverhaulRecord elecRecord = this.getModel();
+	 
 	  
 	  @Resource(name=IElecRepairService.SERVICE_NAME)
 	  private IElecRepairService elecRepairService;
+	  
+	  @Resource(name = IElecDeviceService.SERVICE_NAME)  
+	  IElecDeviceService elecDeviceService;
 	  
       @Resource(name=IElecSystemDDLService.SERVICE_NAME)
 	  private IElecSystemDDLService elecSystemDDLService;
@@ -116,17 +123,6 @@ public class ElecRepairAction extends BaseAction<ElecOverhaulRecord> {
 		}
 		
 		/**  
-		* @Name: add
-		* @Description: 跳转到新增页面
-		* @Return: 跳转到pepairAdd.jsp
-		*/
-		@AnnotationLimit(mid="ac1",pid="ac")
-		public String add(){
-			this.initSystemDDL();
-			return "add";
-		}
-		
-		/**  
 		* @Name: moreAad
 		* @Description: 跳转到批量新增页面
 		* @Return: 跳转repairMoreAdd.jsp
@@ -134,19 +130,31 @@ public class ElecRepairAction extends BaseAction<ElecOverhaulRecord> {
 		@AnnotationLimit(mid="ac5",pid="ac")
 		public String moreAdd(){
 			this.initSystemDDL();
-			
+			ElecDevice elecDevice = new ElecDevice();
+			List<ElecDevice> deviceList = elecDeviceService.findDeviceListByCondition(elecDevice);
+			request.setAttribute("deviceList", deviceList);	
 			return "moreAdd";
 		}
 		
 		/**  
 		* @Name: moreAad
-		* @Description: 跳转到批量新增-设备页面
+		* @Description: 跳转到批量新增页面
 		* @Return: 跳转repairMoreAddList.jsp
 		*/
-		@AnnotationLimit(mid="ac6",pid="ac")
+		@AnnotationLimit(mid="ac5",pid="ac")
 		public String moreAddList(){
 			this.initSystemDDL();
-			
-			return "moreAddList";
+			ElecDevice elecDevice = new ElecDevice();
+			List<ElecDevice> deviceList = elecDeviceService.findDeviceListByCondition(elecDevice);
+			request.setAttribute("deviceList", deviceList);	
+			//用来判断跳转页面的标识
+			String initpage = request.getParameter("initpage");
+			if(initpage!=null && initpage.equals("1")){
+				return "list";
+			}
+			return "moreAdd";
 		}
+		
+
+
 }

@@ -3,6 +3,8 @@ package elec.domain;
 import java.util.Date;
 import java.util.Set;
 
+import org.hibernate.annotations.ManyToAny;
+
 /**
  * 检修记录
  * @author 王少彬。。。。

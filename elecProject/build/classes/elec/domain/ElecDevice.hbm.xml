@@ -23,8 +23,8 @@
 		
 		<!-- hibernate一对多映射-->
 		<set name="record" cascade="save-update" inverse="true" >
-			<key>
-				<column name="DevID"></column>
+			<key column="DevID">
+				
 			</key>
 			<one-to-many class="elec.domain.ElecOverhaulRecord" />
 		</set> 

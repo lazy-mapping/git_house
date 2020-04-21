@@ -164,7 +164,7 @@ function jsJumpToEndJ(){
 			<TD class="DropShadow" background="${pageContext.request.contextPath }/images/cotNavGround.gif" width=80>检修记录列表</TD>
 			<td  align="right"  class="ta_01">
                 <input type="button" name="BT_Search" value="查询" id="BT_Search" onclick="gotoquery('elecRepairAction_home.do')" style="font-size:12px; color:black; height=20;width=50">
-                <input name="BT_Add" type="button" style="font-size:12px; color:black; height=20;width=80" id="BT_Add" onClick="openWindow('${pageContext.request.contextPath }/equapment/elecRepairAction_moreAdd.do',800,450,'添加');" value="批量添加" /> 
+                <input name="BT_Add" type="button" style="font-size:12px; color:black; height=20;width=80" id="BT_Add" onClick="openWindow('${pageContext.request.contextPath }/equapment/elecRepairAction_moreAdd.do',800,450,'添加');" value="添加" /> 
                 <input style="font-size:12px; color:black; height=20;width=80" id="BT_Delete" type="button" value="批量删除" name="BT_Delete" onclick="return returnMethod()">
                 <!-- <input type="button" name="BT_ex" value="导出"  id="BT_ex"     onClick="openWindow('exportXJDevice.do?XorJ=J','600','400');" style="font-size:12px; color:black; height=20;width=50"> -->             
                 <!-- <input type="button" name="BT_ex" value="导出设置"  id="BT_ex"  onClick="openWindow('repairExport.jsp?XorJ=J','600','400');" style="font-size:12px; color:black; height=20;width=80"> -->
@@ -222,8 +222,7 @@ function jsJumpToEndJ(){
 						<s:property value="#record.elecDevice.jctID"/>
 					</td>
 					
-					<td align="center" style="HEIGHT: 22px" align="center" width="17%">																   		   
-				      <%--  <a href="#" onClick="openWindow('${pageContext.request.contextPath }/equapment/elecRepairAction_add.do?SeqID=<s:property value="#record.SeqID"/>',800,450,'添加');" class="cl_01">添加</a>      --%>                 
+					<td align="center" style="HEIGHT: 22px" align="center" width="17%">	                 
                        <a href="#" onClick="openWindow('${pageContext.request.contextPath }/equapment/elecRepairAction_edit.do?SeqID=<s:property value="#record.SeqID"/>&&DevID=<s:property value="#record.elecDevice.DevID"/>',800,450,'设备检修编辑');" class="cl_01">编辑</a>				
                     </td>
 				

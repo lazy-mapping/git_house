@@ -163,7 +163,6 @@
 		<action name="elecRepairAction_*" class="elecRepairAction" method="{1}">
 			<result name="home">/WEB-INF/page/equapment/repairIndex.jsp</result>		
 		    <result name="list">/WEB-INF/page/equapment/repairList.jsp</result>
-		    <result name="add">/WEB-INF/page/equapment/repairAdd.jsp</result>
 		    <result name="edit">/WEB-INF/page/equapment/repairEdit.jsp</result>
 		    <result name="delete" type="redirectAction">
 				<param name="actionName">elecRepairAction_home.do?pageNO=${#request.pageNO}</param>

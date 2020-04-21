@@ -149,8 +149,7 @@ public class ElecRepairServiceImpl implements IElecRepairService {
 			elecRepairDao.update(record);
 			elecDeviceDao.update(record.getElecDevice());
 		}else {
-			elecRepairDao.save(record);
-			elecDeviceDao.save(record.getElecDevice());
+			elecRepairDao.save(record);			
 		}
 	}
 
