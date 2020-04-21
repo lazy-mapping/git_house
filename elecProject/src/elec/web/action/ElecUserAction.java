@@ -62,7 +62,6 @@ public class ElecUserAction extends BaseAction<ElecUser> {
 		}
 		/**添加分页end*/
 		
-		
 		/* 故意抛出异常，测试异常拦截器
 		 * try { ElecUser user = null; user.getBirthday(); } catch (Exception e) {
 		 * e.printStackTrace(); throw new RuntimeException("对不起！报错了！"); }

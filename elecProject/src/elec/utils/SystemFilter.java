@@ -31,7 +31,6 @@ public class SystemFilter implements Filter {
 		list.add("/index.jsp");
 		list.add("/image.jsp");
 		list.add("/system/elecMenuAction_menuHome.do");
-		
 		list.add("/error.jsp");
 		list.add("/system/elecMenuAction_logout.do");
 	}
@@ -56,8 +55,9 @@ public class SystemFilter implements Filter {
 				chain.doFilter(request, response);
 				return;
 		}
-	//转发
+	    //转发
 		request.getRequestDispatcher("/error.jsp").forward(request, response);
+		//return;//不拦截
 	}
 	
 	

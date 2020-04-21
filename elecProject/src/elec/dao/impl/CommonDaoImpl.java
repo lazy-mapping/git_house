@@ -226,7 +226,7 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<
 	
 	
 	//解析map集合，获取排序的语句，ORDER BY o.textDate ASC,o.textRemark DESC
-	private String orderby(Map<String, String> orderby) {
+	protected String orderby(Map<String, String> orderby) {
 		StringBuffer buffer = new StringBuffer("");
 		if(orderby!=null && orderby.size()>0){
 			buffer.append(" order by ");

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+<hibernate-mapping>
+	<class name="elec.domain.ElecOverhaulRecord" table="elec_overhaul_record">
+	    <id name="SeqID" type="string" column="SeqID">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="DevID" type="string" column="DevID"  insert="false" update="false"></property> 
+		<property name="StartDate" type="date" column="StartDate"></property>
+	    <property name="IsHaving" type="string" column="IsHaving"></property>
+		<property name="Record" type="string" column="Record"></property>
+		<property name="repairState" type="string" column="repairState"></property>
+		<!-- 多对一关系配置  -->
+     	<many-to-one name="elecDevice"  cascade="save-update" class="elec.domain.ElecDevice" column="DevID"></many-to-one>
+	
+	</class>
+</hibernate-mapping>

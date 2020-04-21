@@ -8,15 +8,15 @@
 		             <td width="15%" align="left">总记录数：<s:property value="%{#request.page.totalResult}"/>条</td> 
 		             <td width="14%" align="right"></td>   
 		             <s:if test="#request.page.firstPage">
-		             	<td width="8%" align="center">首页&nbsp;&nbsp;|</td>
-		             	<td width="10%" align="center">上一页&nbsp;&nbsp;&nbsp;|</td>
+		             	<td width="8%" align="center">首页&nbsp;&nbsp;</td>
+		             	<td width="10%" align="center">上一页&nbsp;&nbsp;&nbsp;</td>
 		             </s:if>   
 		             <s:else>
 		             	<td width="8%" align="center"><u><a href="#" onClick="gotopage('elecUserAction_home.do','start')">首页&nbsp;&nbsp;|</a></u></td>
 		             	<td width="10%" align="center"><u><a href="#" onClick="gotopage('elecUserAction_home.do','prev')">上一页&nbsp;&nbsp;&nbsp;|</a></u></td>
 		             </s:else>
 		             <s:if test="#request.page.lastPage">
-					 	<td width="10%" align="center">下一页&nbsp;&nbsp;&nbsp;|</td>
+					 	<td width="10%" align="center">下一页&nbsp;&nbsp;&nbsp;</td>
 		             	<td width="8%" align="center">末页</td>
 		             </s:if>
 		             <s:else>

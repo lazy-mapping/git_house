@@ -121,6 +121,7 @@
 				<param name="actionName">elecRoleAction_home.do</param>
 			</result>
 		</action>
+		
 	</package>
 	
 	<!-- 资料图纸管理 -->
@@ -139,5 +140,40 @@
 				<param name="actionName">elecFileUploadAction_home.do</param>
 			</result>
 		</action>
+	</package>
+	
+	
+	<package name="equapment" namespace="/equapment" extends="struts-default">
+		<!-- 设备管理 -->
+		<action name="elecDeviceAction_*" class="elecDeviceAction" method="{1}">
+			<result name="home">/WEB-INF/page/equapment/equapmentIndex.jsp</result>		
+			<result name="edit">/WEB-INF/page/equapment/equapmentEdit.jsp</result>
+			<result name="delete" type="redirectAction">
+				<param name="actionName">elecDeviceAction_home.do?pageNO=${#request.pageNO}</param>
+				</result>
+			<result name="save" type="redirectAction">
+				<param name="actionName">elecDeviceAction_home.do</param>
+				</result>
+			<result name="add">/WEB-INF/page/equapment/equapmentView.jsp</result>
+			<result name="list">/WEB-INF/page/equapment/equapmentList.jsp</result>
+			<result name="close">/close.jsp</result>
+		</action>	
+		
+		<!-- 检修记录管理 -->
+		<action name="elecRepairAction_*" class="elecRepairAction" method="{1}">
+			<result name="home">/WEB-INF/page/equapment/repairIndex.jsp</result>		
+		    <result name="list">/WEB-INF/page/equapment/repairList.jsp</result>
+		    <result name="add">/WEB-INF/page/equapment/repairAdd.jsp</result>
+		    <result name="edit">/WEB-INF/page/equapment/repairEdit.jsp</result>
+		    <result name="delete" type="redirectAction">
+				<param name="actionName">elecRepairAction_home.do?pageNO=${#request.pageNO}</param>
+			</result>
+			<result name="moreAdd">/WEB-INF/page/equapment/repairMoreAdd.jsp</result>
+			<result name="moreAddList">/WEB-INF/page/equapment/repairMoreAddList.jsp</result>
+			<result name="save" type="redirectAction">
+				<param name="actionName">elecRepairAction_home.do</param>
+			</result>
+		</action>
+		
 	</package>
 </struts>

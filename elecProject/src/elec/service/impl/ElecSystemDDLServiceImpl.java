@@ -52,7 +52,7 @@ public class ElecSystemDDLServiceImpl implements IElecSystemDDLService {
 		//排序，按照数据项的编号升序排列
 		Map<String, String> orderby = new LinkedHashMap<String, String>();
 		orderby.put("o.ddlCode", "asc");
-		//Hibernate的底层查询集合的方法，目前不懂且不会用这个封装方法
+		//Hibernate的底层查询集合的方法
 		List<ElecSystemDDL> list = elecSystemDDLDao.findCollectionByConditionNoPageCache(condition, params, orderby);
 		
 		return list;

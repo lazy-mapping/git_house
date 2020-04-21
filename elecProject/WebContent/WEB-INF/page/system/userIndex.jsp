@@ -113,10 +113,10 @@
 				<tr>
 				  	<td>
 		                <TABLE style="WIDTH: 105px; HEIGHT: 20px" border="0">
-										<TR>
-											<TD align="center" background="${pageContext.request.contextPath }/images/cotNavGround.gif"><img src="${pageContext.request.contextPath }/images/yin.gif" width="15"></TD>
-											<TD class="DropShadow" background="${pageContext.request.contextPath }/images/cotNavGround.gif">用户列表</TD>
-										</TR>
+								<TR>
+									<TD align="center" background="${pageContext.request.contextPath }/images/cotNavGround.gif"><img src="${pageContext.request.contextPath }/images/yin.gif" width="15"></TD>
+									<TD class="DropShadow" background="${pageContext.request.contextPath }/images/cotNavGround.gif">用户列表</TD>
+								</TR>
 			             </TABLE>
                    </td>
 					<td class="ta_01" align="right">

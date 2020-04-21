@@ -112,9 +112,10 @@
 	   }
 	   
 	   document.Form1.action="${pageContext.request.contextPath }/system/elecUserAction_save.do";
-	   document.Form1.submit();
-	  	
+	   document.Form1.submit();	  	
 	}
+	
+	
 	function checkTextAreaLen(){
   		var remark = new Bs_LimitedTextarea('remark', 250); 
   		remark.infolineCssStyle = "font-family:arial; font-size:11px; color:gray;";
@@ -307,11 +308,11 @@
 	<tr>
 		<td class="ta_01" style="WIDTH: 100%" align="center" bgColor="#f5fafe" colSpan="4">
 			<s:if test="viewflag==null">
-				<input type="button" id="BT_Submit" name="BT_Submit" value="保存"  style="font-size:12px; color:black; height=22;width=55"  onClick="check_null()">
+				<input type="button" id="BT_Submit" name="BT_Submit" value="保存"  style="font-size:12px; color:black;" height=22;width=55;  onClick="check_null()">
 			</s:if>
 		    <FONT face="宋体">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>
 		    <s:if test="roleflag==null">
-		    	 <input style="font-size:12px; color:black; height=22;width=55" type="button" value="关闭"  name="Reset1"  onClick="window.close()">
+		    	 <input style="font-size:12px; color:black;" height=22;width=55; type="button" value="关闭"  name="Reset1"  onClick="window.close()">
 		    </s:if>
 	    </td>
 	</tr>

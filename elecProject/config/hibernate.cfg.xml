@@ -34,6 +34,8 @@
 		<mapping resource="elec/domain/ElecPopedom.hbm.xml"/>
 		<mapping resource="elec/domain/ElecRolePopedom.hbm.xml"/>
 		<mapping resource="elec/domain/ElecFileUpload.hbm.xml"/>
+		<mapping resource="elec/domain/ElecDevice.hbm.xml"/>
+		<mapping resource="elec/domain/ElecOverhaulRecord.hbm.xml"/>
 		
 	    <!-- 指定使用二级缓存的类 放在maping下面 -->
         <!-- 配置类级别的二级缓存 -->

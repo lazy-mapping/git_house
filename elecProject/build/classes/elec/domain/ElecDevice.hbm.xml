@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+<hibernate-mapping>
+	<class name="elec.domain.ElecDevice" table="elec_device">
+	    <id name="DevID" type="string" column="DevID">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="DevName" type="string" column="DevName"></property>
+		<property name="DevType" type="string" column="DevType"></property>
+		<property name="ProduceHome" type="string" column="ProduceHome"></property>
+		<property name="voltage" type="string" column="voltage"></property>
+		<property name="power" type="string" column="power"></property>
+		<property name="Remrk" type="string" column="Remrk"></property>
+		<property name="UseDate" type="date" column="UseDate"></property>
+		<property name="ProduceArea" type="string" column="ProduceArea"></property>
+		<property name="jctID" type="string" column="JctID"></property>
+		<property name="jctUnitID" type="string" column="JctUnitID"></property>
+		<property name="Uses" type="string" column="Uses"></property>
+		<property name="AdjustPeriod" type="string" column="AdjustPeriod"></property>
+		<property name="DevState" type="string" column="DevState"></property>
+		
+		<!-- hibernate一对多映射-->
+		<set name="record" cascade="save-update" inverse="true" >
+			<key>
+				<column name="DevID"></column>
+			</key>
+			<one-to-many class="elec.domain.ElecOverhaulRecord" />
+		</set> 
+	</class>
+</hibernate-mapping>

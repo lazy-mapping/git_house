@@ -114,8 +114,7 @@ function returnConfirm(name){
 					<td align="center" width="10%"  height=22 background="${pageContext.request.contextPath }/images/tablehead.jpg">图纸类别</td>
 					<td align="center" width="48%" height=22 background="${pageContext.request.contextPath }/images/tablehead.jpg">图纸名称</td>
 					<td align="center" width="10%"  height=22 background="${pageContext.request.contextPath }/images/tablehead.jpg">描述</td>
-					<td width="6%" align="center" height=22 background="${pageContext.request.contextPath }/images/tablehead.jpg">删除</td>
-						
+					<td width="6%" align="center" height=22 background="${pageContext.request.contextPath }/images/tablehead.jpg">删除</td>	
 				</tr>
 				<s:if test="#request.uploadList!=null && #request.uploadList.size()>0">
 					<s:iterator value="#request.uploadList" var="upload" status="st">
